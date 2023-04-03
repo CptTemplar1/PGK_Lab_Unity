@@ -1,14 +1,11 @@
-Shader "Custom/ColorThreshold" {
+Shader "Custom/SquareGradient" {
     Properties{
         _MainTex("Texture", 2D) = "white" {}
-        _Threshold("Threshold", Range(0, 1)) = 0.5
-        _SquareSize("Square Size", Range(1, 100)) = 100
+        _Color1("Color 1", Color) = (1,1,1,1)
+        _Color2("Color 2", Color) = (0,0,0,1)
     }
 
         SubShader{
-            Tags { "Queue" = "Transparent" "RenderType" = "Opaque" }
-            LOD 100
-
             Pass {
                 CGPROGRAM
                 #pragma vertex vert
@@ -26,8 +23,8 @@ Shader "Custom/ColorThreshold" {
                 };
 
                 sampler2D _MainTex;
-                float _Threshold;
-                float _SquareSize;
+                float4 _Color1;
+                float4 _Color2;
 
                 v2f vert(appdata v) {
                     v2f o;
@@ -37,17 +34,15 @@ Shader "Custom/ColorThreshold" {
                 }
 
                 fixed4 frag(v2f i) : SV_Target {
-                    float4 col = tex2D(_MainTex, i.uv);
-                    float grayscale = dot(col.rgb, float3(0.299, 0.587, 0.114));
-                    fixed4 squareColor = (grayscale >= _Threshold) ? fixed4(1, 1, 1, col.a) : fixed4(0, 0, 0, col.a);
-
-                    // Calculate approximate color value for 100x100 pixel square
-                    float2 squarePos = floor(i.uv * _SquareSize / 100) * 100;
-                    float4 approxColor = tex2D(_MainTex, squarePos / _SquareSize);
-
-                    return lerp(approxColor, squareColor, step(_Threshold, grayscale));
+                    float2 position = i.uv * 16;
+                    float2 squarePosition = floor(position) / 16;
+                    float2 relativePosition = position - floor(position);
+                    float t = length(relativePosition - 0.5);
+                    float4 color = lerp(_Color1, _Color2, t);
+                    return color * tex2D(_MainTex, squarePosition);
                 }
                 ENDCG
             }
         }
+            FallBack "Diffuse"
 }

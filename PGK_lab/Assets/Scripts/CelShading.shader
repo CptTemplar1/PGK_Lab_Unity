@@ -4,26 +4,25 @@ Shader "Roystan/CelShading"
 	{
 		_Color("Color", Color) = (1,1,1,1)
 		_MainTex("Main Texture", 2D) = "white" {}
-	// Ambient light is applied uniformly to all surfaces on the object.
+	// Œwiat³o otoczenia jest nak³adane równomiernie na wszystkie powierzchnie obiektu
 	[HDR]
 	_AmbientColor("Ambient Color", Color) = (0.4,0.4,0.4,1)
 	[HDR]
 	_SpecularColor("Specular Color", Color) = (0.9,0.9,0.9,1)
-		// Controls the size of the specular reflection.
+		// Kontrola rozmiaru odbicia lustrzanego.
 		_Glossiness("Glossiness", Float) = 32
 		[HDR]
 		_RimColor("Rim Color", Color) = (1,1,1,1)
 		_RimAmount("Rim Amount", Range(0, 1)) = 0.716
-			// Control how smoothly the rim blends when approaching unlit
-			// parts of the surface.
+			// Kontroluje, jak p³ynnie krawêdŸ siê zlewa, gdy zbli¿a siê do nieoœwietlonych czêœci powierzchni
 			_RimThreshold("Rim Threshold", Range(0, 1)) = 0.1
 	}
 		SubShader
 		{
 			Pass
 			{
-				// Setup our pass to use Forward rendering, and only receive
-				// data on the main directional light and ambient light.
+				// Ustawienie Shader Pass na u¿ycie  Forward renderingu, i odbieranie tylko
+				// danych o g³ównym œwietle kierunkowym i œwietle otoczenia.
 				Tags
 				{
 					"LightMode" = "ForwardBase"
@@ -33,12 +32,11 @@ Shader "Roystan/CelShading"
 				CGPROGRAM
 				#pragma vertex vert
 				#pragma fragment frag
-			// Compile multiple versions of this shader depending on lighting settings.
+			// Kompilacja wielu wersji tego shadera w zale¿noœci od ustawieñ oœwietlenia.
 			#pragma multi_compile_fwdbase
 
 			#include "UnityCG.cginc"
-			// Files below include macros and functions to assist
-			// with lighting and shadows.
+			// Pliki poni¿ej zawieraj¹ makra i funkcje pomocnicze do oœwietlenia i cieni.
 			#include "Lighting.cginc"
 			#include "AutoLight.cginc"
 
@@ -55,9 +53,8 @@ Shader "Roystan/CelShading"
 				float3 worldNormal : NORMAL;
 				float2 uv : TEXCOORD0;
 				float3 viewDir : TEXCOORD1;
-				// Macro found in Autolight.cginc. Declares a vector4
-				// into the TEXCOORD2 semantic with varying precision 
-				// depending on platform target.
+				// Makro znalezione w Autolight.cginc. Deklaruje wektor4 do semantyki TEXCOORD2 z zmienn¹ precyzj¹
+				// w zale¿noœci od docelowej platformy.
 				SHADOW_COORDS(2)
 			};
 
@@ -71,8 +68,8 @@ Shader "Roystan/CelShading"
 				o.worldNormal = UnityObjectToWorldNormal(v.normal);
 				o.viewDir = WorldSpaceViewDir(v.vertex);
 				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
-				// Defined in Autolight.cginc. Assigns the above shadow coordinate
-				// by transforming the vertex from world space to shadow-map space.
+				// Zdefiniowane w Autolight.cginc. Przypisuje powy¿sze koordynaty cienia
+				// przez przetransformowanie wierzcho³ka z przestrzeni œwiata do przestrzeni mapy cieni.
 				TRANSFER_SHADOW(o)
 				return o;
 			}
@@ -93,37 +90,37 @@ Shader "Roystan/CelShading"
 				float3 normal = normalize(i.worldNormal);
 				float3 viewDir = normalize(i.viewDir);
 
-				// Lighting below is calculated using Blinn-Phong,
-				// with values thresholded to creat the "toon" look.
+				// Oœwietlenie poni¿ej jest obliczane z u¿yciem modelu Blinn-Phonga,
+				// z wartoœciami ograniczonymi, aby stworzyæ "toonowy" wygl¹d.
 				// https://en.wikipedia.org/wiki/Blinn-Phong_shading_model
 
-				// Calculate illumination from directional light.
-				// _WorldSpaceLightPos0 is a vector pointing the OPPOSITE
-				// direction of the main directional light.
+				// Oblicz oœwietlenie od œwiat³a kierunkowego.
+				// _WorldSpaceLightPos0 to wektor skierowany w PRZECIWNYM
+				// kierunku g³ównego œwiat³a kierunkowego.
 				float NdotL = dot(_WorldSpaceLightPos0, normal);
 
-				// Samples the shadow map, returning a value in the 0...1 range,
-				// where 0 is in the shadow, and 1 is not.
+				// Pobierz wartoœæ z cieniowanej mapy, zwracaj¹c wartoœæ z zakresu 0...1,
+				// gdzie 0 to cieñ, a 1 to brak cienia.
 				float shadow = SHADOW_ATTENUATION(i);
-				// Partition the intensity into light and dark, smoothly interpolated
-				// between the two to avoid a jagged break.
+				// Podziel intensywnoœæ na jasne i ciemne, p³ynnie interpoluj¹c
+				// pomiêdzy nimi, aby unikn¹æ drastycznego skoku.
 				float lightIntensity = smoothstep(0, 0.01, NdotL * shadow);
-				// Multiply by the main directional light's intensity and color.
+				// Pomnó¿ przez intensywnoœæ i kolor g³ównego œwiat³a kierunkowego.
 				float4 light = lightIntensity * _LightColor0;
 
-				// Calculate specular reflection.
+				// Oblicz odbicie lustrzane.
 				float3 halfVector = normalize(_WorldSpaceLightPos0 + viewDir);
 				float NdotH = dot(normal, halfVector);
-				// Multiply _Glossiness by itself to allow artist to use smaller
-				// glossiness values in the inspector.
+				// Pomnó¿ przez _Glossiness, aby umo¿liwiæ artystom u¿ycie mniejszych
+				// wartoœci po³ysku w edytorze.
 				float specularIntensity = pow(NdotH * lightIntensity, _Glossiness * _Glossiness);
 				float specularIntensitySmooth = smoothstep(0.005, 0.01, specularIntensity);
 				float4 specular = specularIntensitySmooth * _SpecularColor;
 
-				// Calculate rim lighting.
+				// Oblicz podœwietlenie krawêdzi.
 				float rimDot = 1 - dot(viewDir, normal);
-				// We only want rim to appear on the lit side of the surface,
-				// so multiply it by NdotL, raised to a power to smoothly blend it.
+				// Chcemy, aby efekt oœwietleniowy na krawêdziach by³ widoczny tylko na oœwietlonej stronie powierzchni,
+				// dlatego mno¿ymy go przez NdotL podniesione do potêgi, aby uzyskaæ p³ynne przejœcie.
 				float rimIntensity = rimDot * pow(NdotL, _RimThreshold);
 				rimIntensity = smoothstep(_RimAmount - 0.01, _RimAmount + 0.01, rimIntensity);
 				float4 rim = rimIntensity * _RimColor;
@@ -135,7 +132,7 @@ Shader "Roystan/CelShading"
 			ENDCG
 		}
 
-			// Shadow casting support.
+			// Obs³uga rzucania cieni.
 			UsePass "Legacy Shaders/VertexLit/SHADOWCASTER"
 		}
 }

@@ -33,7 +33,7 @@ Shader "Custom/ZmienBialy" {
                 }
 
                 fixed4 frag(v2f i) : SV_Target {
-                    // Return white color for every pixel
+                    // Zwraca bia³y kolor dla ka¿dego piksela
                     return float4(1, 1, 1, 1);
                 }
                 ENDCG

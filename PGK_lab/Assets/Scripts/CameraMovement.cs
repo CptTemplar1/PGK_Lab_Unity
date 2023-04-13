@@ -22,15 +22,15 @@ public class CameraMovement : MonoBehaviour
     void Update()
     {
         // Pobieranie danych o zmianie po³o¿enia myszki
-        float mouseMovementX = Input.GetAxisRaw("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseMovementY = Input.GetAxisRaw("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        float mouseMovementX = Input.GetAxisRaw("Mouse X") * mouseSensitivity * Time.deltaTime * 2;
+        float mouseMovementY = Input.GetAxisRaw("Mouse Y") * mouseSensitivity * Time.deltaTime * 2;
 
         // Aktualizacja zmiennych przechowuj¹cych rotacjê kamery o pobrane wartoœci
         rotationY += mouseMovementX;
         rotationX -= mouseMovementY;
 
-        // Ograniczenie maksymalnego k¹ta spojrzenia w górê i w dó³ do 60 stopni
-        rotationX = Mathf.Clamp(rotationX, -60f, 60f);
+        // Ograniczenie maksymalnego k¹ta spojrzenia w górê i w dó³ do 90 stopni
+        rotationX = Mathf.Clamp(rotationX, -90f, 90f);
 
         // Zmiana rotacji kamery na ustalon¹ przez zmienne
         transform.rotation = Quaternion.Euler(rotationX, rotationY, 0);

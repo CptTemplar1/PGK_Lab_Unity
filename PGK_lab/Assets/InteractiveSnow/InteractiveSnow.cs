@@ -97,7 +97,6 @@
 
 
 
-
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -107,8 +106,6 @@ public class InteractiveSnow : MonoBehaviour
     [SerializeField] private Texture _stepPrint;
     [SerializeField] private Material _snowMaterial;
     [SerializeField] private Transform[] _trailsPositions; // all points on which trails will be drawn
-    [SerializeField] private float snowLevel = 0;
-
 
     [SerializeField]
     private float _drawDistance = 0.3f; // the distance between the terrain and the point where the trail will be drawn
@@ -124,6 +121,8 @@ public class InteractiveSnow : MonoBehaviour
     private readonly int DrawBrush = Shader.PropertyToID("_DrawBrush");
     private readonly int HeightMap = Shader.PropertyToID("_HeightMap");
 
+    Terrain terrain;
+
     private void Start()
     {
         Initialize();
@@ -134,7 +133,18 @@ public class InteractiveSnow : MonoBehaviour
     {
         DrawTrails();
         _snowHeightMap.Update();
-        snowLevel += 0.01f * Time.deltaTime;
+
+        if(Input.GetKeyDown(KeyCode.U))
+        {
+            float tmp = terrain.materialTemplate.GetFloat("_HeightAmount");
+            terrain.materialTemplate.SetFloat("_HeightAmount", tmp+0.1f);
+        }
+        else if(Input.GetKeyDown(KeyCode.I))
+        {
+            float tmp = terrain.materialTemplate.GetFloat("_HeightAmount");
+            terrain.materialTemplate.SetFloat("_HeightAmount", tmp - 0.1f);
+        }
+
     }
 
     private void Initialize()
@@ -144,7 +154,7 @@ public class InteractiveSnow : MonoBehaviour
         _heightMapUpdate = CreateHeightMapUpdate(_snowHeightMapUpdate, _stepPrint);
         _snowHeightMap = CreateHeightMap(512, 512, _heightMapUpdate);
 
-        var terrain = gameObject.GetComponent<Terrain>();
+        terrain = gameObject.GetComponent<Terrain>();
         terrain.materialTemplate = material;
         terrain.materialTemplate.SetTexture(HeightMap, _snowHeightMap);
 

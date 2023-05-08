@@ -123,9 +123,14 @@ public class InteractiveSnow : MonoBehaviour
 
     Terrain terrain;
 
+    private bool enable = false;
+
     private void Start()
     {
         Initialize();
+        enable = true;
+        float tmp = terrain.materialTemplate.GetFloat("_HeightAmount");
+        terrain.materialTemplate.SetFloat("_HeightAmount", tmp - 1.0f);
     }
 
 
@@ -145,6 +150,19 @@ public class InteractiveSnow : MonoBehaviour
             terrain.materialTemplate.SetFloat("_HeightAmount", tmp - 0.1f);
         }
 
+        if(enable == true && terrain.materialTemplate.GetFloat("_HeightAmount") < 1.0f)
+        {
+            enable = false;
+            StartCoroutine(increaseHeight());
+        }
+    }
+
+    System.Collections.IEnumerator increaseHeight()
+    {
+        yield return new WaitForSeconds(3);
+        float tmp = terrain.materialTemplate.GetFloat("_HeightAmount");
+        terrain.materialTemplate.SetFloat("_HeightAmount", tmp + 0.05f);
+        enable = true;
     }
 
     private void Initialize()

@@ -23,10 +23,10 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 0.4
+  m_AmbientIntensity: 0.7
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.16967781, g: 0.20442542, b: 0.2924528, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: dd8d11dbf8ba35744957bdaef16c78c0, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 7e1e5781d39549148abcbf66c428df00, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -35,10 +35,10 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 2
-  m_ReflectionIntensity: 0.3
+  m_ReflectionIntensity: 0.5
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.39193755, g: 0.36003935, b: 0.3291665, a: 0.3}
+  m_IndirectSpecularColor: {r: 0.020372987, g: 0.025271712, b: 0.04169213, a: 0.5}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4424,7 +4424,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.9245283, g: 0.7218809, b: 0.16920607, a: 1}
+  m_Color: {r: 0.6132076, g: 0.59143764, b: 0.44255075, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -29298,6 +29298,10 @@ PrefabInstance:
     - target: {fileID: 2008939474831780133, guid: 9847a415b99fecc4785318292213bb69, type: 3}
       propertyPath: m_Name
       value: Deszcz
+      objectReference: {fileID: 0}
+    - target: {fileID: 2008939474831780133, guid: 9847a415b99fecc4785318292213bb69, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6765195414440393587, guid: 9847a415b99fecc4785318292213bb69, type: 3}
       propertyPath: SubModule.enabled

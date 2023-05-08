@@ -121,16 +121,24 @@ public class InteractiveSnow : MonoBehaviour
     private readonly int DrawBrush = Shader.PropertyToID("_DrawBrush");
     private readonly int HeightMap = Shader.PropertyToID("_HeightMap");
 
-    Terrain terrain;
+    Terrain terrain; //terrain, na którym jest dodany shader œniegu
 
-    private bool enable = false;
+    private bool enable = false; //zmienna okreœlaj¹ca czy licznik wzrostu œniegu ma dzia³aæ
 
     private void Start()
     {
-        Initialize();
+        _heightMapUpdate = CreateHeightMapUpdate(_snowHeightMapUpdate, _stepPrint);
+        _snowHeightMap = CreateHeightMap(512, 512, _heightMapUpdate);
+
+        terrain = gameObject.GetComponent<Terrain>();
+        terrain.materialTemplate = _snowMaterial;
+        terrain.materialTemplate.SetTexture(HeightMap, _snowHeightMap);
+
+        _snowHeightMap.Initialize();
+
+        //w³¹czenie narastania œniegu i wyzerowanie jego warstwy
         enable = true;
-        float tmp = terrain.materialTemplate.GetFloat("_HeightAmount");
-        terrain.materialTemplate.SetFloat("_HeightAmount", tmp - 1.0f);
+        terrain.materialTemplate.SetFloat("_HeightAmount", 0);
     }
 
 
@@ -139,46 +147,36 @@ public class InteractiveSnow : MonoBehaviour
         DrawTrails();
         _snowHeightMap.Update();
 
-        if(Input.GetKeyDown(KeyCode.U))
+        //zwiêkszanie/zmniejszanie wysokoœci œniegu przyciskami U oraz I
+        if (Input.GetKeyDown(KeyCode.U))
         {
             float tmp = terrain.materialTemplate.GetFloat("_HeightAmount");
-            terrain.materialTemplate.SetFloat("_HeightAmount", tmp+0.1f);
+            terrain.materialTemplate.SetFloat("_HeightAmount", tmp + 0.1f);
         }
-        else if(Input.GetKeyDown(KeyCode.I))
+        else if (Input.GetKeyDown(KeyCode.I))
         {
             float tmp = terrain.materialTemplate.GetFloat("_HeightAmount");
             terrain.materialTemplate.SetFloat("_HeightAmount", tmp - 0.1f);
         }
 
-        if(enable == true && terrain.materialTemplate.GetFloat("_HeightAmount") < 1.0f)
+        //jeœli œnieg jest ni¿szy ni¿ okreœlona wartoœæ to uruchom wzrost
+        if (enable == true && terrain.materialTemplate.GetFloat("_HeightAmount") < 1.0f)
         {
             enable = false;
             StartCoroutine(increaseHeight());
         }
     }
 
+    //zwiêkszanie wysokoœci œniegu co 1 sekundê
     System.Collections.IEnumerator increaseHeight()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
         float tmp = terrain.materialTemplate.GetFloat("_HeightAmount");
-        terrain.materialTemplate.SetFloat("_HeightAmount", tmp + 0.05f);
+        terrain.materialTemplate.SetFloat("_HeightAmount", tmp + 0.01f);
         enable = true;
     }
 
-    private void Initialize()
-    {
-        var material = new Material(_snowMaterial);
-
-        _heightMapUpdate = CreateHeightMapUpdate(_snowHeightMapUpdate, _stepPrint);
-        _snowHeightMap = CreateHeightMap(512, 512, _heightMapUpdate);
-
-        terrain = gameObject.GetComponent<Terrain>();
-        terrain.materialTemplate = material;
-        terrain.materialTemplate.SetTexture(HeightMap, _snowHeightMap);
-
-        _snowHeightMap.Initialize();
-    }
-
+    //rysuj œlady w œniegu
     private void DrawTrails()
     {
         var trail = _trailsPositions[_index];

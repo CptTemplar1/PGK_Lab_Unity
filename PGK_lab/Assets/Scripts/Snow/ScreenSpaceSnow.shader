@@ -71,7 +71,7 @@ Shader "TKoU/ScreenSpaceSnow"
 		        float4 wpos = mul(_CamToWorld, float4(vpos, 1));
 		        wpos += float4(_WorldSpaceCameraPos, 0) / _ProjectionParams.z;
 
-		        half3 snowColor = tex2D(_SnowTex, wpos.xz * _SnowTexScale * _ProjectionParams.z) * _SnowColor;
+		        half4 snowColor = tex2D(_SnowTex, wpos.xz * _SnowTexScale * _ProjectionParams.z) * _SnowColor;
 
 		        // get color and lerp to snow texture
 		        half4 col = tex2D(_MainTex, i.uv);

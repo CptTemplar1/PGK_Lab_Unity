@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.5
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.020372987, g: 0.025271712, b: 0.04169213, a: 0.5}
+  m_IndirectSpecularColor: {r: 0.020359267, g: 0.025272861, b: 0.041623596, a: 0.5}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5536,6 +5536,7 @@ GameObject:
   - component: {fileID: 933231656}
   - component: {fileID: 933231655}
   - component: {fileID: 933231654}
+  - component: {fileID: 933231658}
   m_Layer: 7
   m_Name: Terrain
   m_TagString: Untagged
@@ -5621,6 +5622,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &933231658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933231653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 736033f027ff6a94cb576a67cd5bed29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &939155549
 GameObject:
   m_ObjectHideFlags: 0

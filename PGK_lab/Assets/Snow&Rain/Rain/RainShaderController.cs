@@ -18,6 +18,20 @@ public class RainShaderController : MonoBehaviour
 
     private void Update()
     {
+        //zwiêkszanie/zmniejszanie wysokoœci poziomu wody przyciskami U oraz I
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            float tmp = rainMaterial.GetFloat("_WaterLevel") + 0.1f;
+            rainMaterial.SetFloat("_WaterLevel", tmp);
+            waterLevel = tmp;
+        }
+        else if (Input.GetKeyDown(KeyCode.I))
+        {
+            float tmp = rainMaterial.GetFloat("_WaterLevel") - 0.1f;
+            rainMaterial.SetFloat("_WaterLevel", tmp);
+            waterLevel = tmp;
+        }
+
         // zwiêkszanie poziomu wody z czasem
         if (waterLevel < maxWaterLevel)
         {

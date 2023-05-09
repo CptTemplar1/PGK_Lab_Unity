@@ -6,6 +6,9 @@ public class RainShaderController : MonoBehaviour
 {
     Material rainMaterial; //materia³ z shaderem deszczu
 
+    float waterLevel = 0f; // aktualny poziom wody
+    float maxWaterLevel = 1f; // maksymalny poziom wody
+
     private void Start()
     {
         rainMaterial = gameObject.GetComponent<Renderer>().material; //pobranie materia³u shadera deszczu
@@ -15,15 +18,11 @@ public class RainShaderController : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyUp(KeyCode.U))
+        // zwiêkszanie poziomu wody z czasem
+        if (waterLevel < maxWaterLevel)
         {
-            float tmp = rainMaterial.GetFloat("_WaterLevel");
-            rainMaterial.SetFloat("_WaterLevel", tmp+0.1f);
-        }
-        else if (Input.GetKeyUp(KeyCode.I))
-        {
-            float tmp = rainMaterial.GetFloat("_WaterLevel");
-            rainMaterial.SetFloat("_WaterLevel", tmp - 0.1f);
+            waterLevel += Time.deltaTime * 0.01f; // zmiana poziomu wody w czasie
+            rainMaterial.SetFloat("_WaterLevel", waterLevel); // aktualizacja poziomu wody w shaderze
         }
     }
 }

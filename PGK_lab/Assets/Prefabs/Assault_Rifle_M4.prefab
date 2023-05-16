@@ -244,17 +244,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnLocator: {fileID: 4909358850305499906}
   shellLocator: {fileID: 8093734727887732691}
-  projectileList:
-  - name: 
-    bombPrefab: {fileID: 0}
-    min: 0
-    max: 0
-    rapidFire: 0
-    rapidFireCooldown: 0
-    shotgunBehavior: 0
-    shotgunPellets: 0
-    shellPrefab: {fileID: 0}
-    hasShells: 0
+  projectile:
+    name: BlazingRed Bullet Medium
+    bombPrefab: {fileID: 54212628334827884, guid: 0d5375de13c0d07418db45e642648e1b, type: 3}
+    min: 2800
+    max: 3100
+    rapidFire: 1
+    rapidFireCooldown: 0.2
+    shellPrefab: {fileID: 1467181274829480, guid: 41e86fd3ee46b76448791422f9949474, type: 3}
   rapidFireDelay: 0
   firing: 0
   bombType: 0

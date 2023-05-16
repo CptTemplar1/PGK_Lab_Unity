@@ -16,10 +16,7 @@ public class ECprojectileActor : MonoBehaviour {
         public bool rapidFire;
         public float rapidFireCooldown;   
 
-        public bool shotgunBehavior;
-        public int shotgunPellets;
         public GameObject shellPrefab;
-        public bool hasShells;
     }
     public Projectile projectile;
 

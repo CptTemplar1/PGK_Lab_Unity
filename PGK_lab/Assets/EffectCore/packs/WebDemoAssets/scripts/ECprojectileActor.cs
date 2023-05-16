@@ -8,7 +8,7 @@ public class ECprojectileActor : MonoBehaviour {
     public Transform shellLocator;
 
     [System.Serializable]
-    public class projectile
+    public class Projectile
     {
         public string name;
         public Rigidbody bombPrefab;
@@ -21,21 +21,12 @@ public class ECprojectileActor : MonoBehaviour {
         public GameObject shellPrefab;
         public bool hasShells;
     }
-    public projectile[] bombList;
+    public Projectile projectile;
 
-    public Text UiText;
-
-    public bool UImaster = true;
     public float rapidFireDelay;
-    public ECCameraShakeProjectile CameraShakeCaller;
 
-    float firingTimer;
     public bool firing;
     public int bombType = 0;
-
-   // public ParticleSystem muzzleflare;
-
-    public bool swarmMissileLauncher = false;
 
     public bool Torque = false;
     public float Tor_min, Tor_max;
@@ -44,11 +35,6 @@ public class ECprojectileActor : MonoBehaviour {
     public bool MajorRotate = false;
     int seq = 0;
 
-
-	// Use this for initialization
-	void Start ()
-    {
-	}
 	
 	// Update is called once per frame
 	void Update ()
@@ -58,39 +44,22 @@ public class ECprojectileActor : MonoBehaviour {
             firing = true;
             Fire();
         }
+
         if (Input.GetButtonUp("Fire1"))
         {
             firing = false;
-            firingTimer = 0;
-        }
-
-        if (bombList[bombType].rapidFire && firing)
-        {
-            if(firingTimer > bombList[bombType].rapidFireCooldown+rapidFireDelay)
-            {
-                Fire();
-                firingTimer = 0;
-            }
-        }
-
-        if(firing)
-        {
-            firingTimer += Time.deltaTime;
         }
 	}
 
     public void Fire()
     {
         //respienie łuski
-        if (bombList[bombType].hasShells)
-        {
-            Instantiate(bombList[bombType].shellPrefab, shellLocator.position, shellLocator.rotation);
-        }
+        Instantiate(projectile.shellPrefab, shellLocator.position, shellLocator.rotation);
 
         Rigidbody rocketInstance;
-        rocketInstance = Instantiate(bombList[bombType].bombPrefab, spawnLocator.position,spawnLocator.rotation) as Rigidbody;
+        rocketInstance = Instantiate(projectile.bombPrefab, spawnLocator.position,spawnLocator.rotation) as Rigidbody;
         // Quaternion.Euler(0,90,0)
-        rocketInstance.AddForce(spawnLocator.forward * Random.Range(bombList[bombType].min, bombList[bombType].max));
+        rocketInstance.AddForce(spawnLocator.forward * Random.Range(projectile.min, projectile.max));
 
         if (Torque)
         {

@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Doll
+  - FX
+  - Team Blue
+  - Team Red
   layers:
   - Default
   - TransparentFX

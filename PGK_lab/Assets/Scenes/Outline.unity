@@ -3707,8 +3707,244 @@ PrefabInstance:
       value: Team Blue
       objectReference: {fileID: 0}
     - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: drawingMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: renderStyle
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: complexMaskingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: backParameters.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: frontParameters.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.shader
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
       propertyPath: outlineTargets.Array.data[0].IsVisible
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[0].PropertyName
+      value: _PublicColor
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[1].PropertyName
+      value: _PublicHorizontalSize
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[2].PropertyName
+      value: _PublicVerticalSize
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[3].PropertyName
+      value: _PublicHorizontalGapSize
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[4].PropertyName
+      value: _PublicVerticalGapSize
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[5].PropertyName
+      value: _PublicHorizontalSoftness
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[6].PropertyName
+      value: _PublicVerticalSoftness
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[7].PropertyName
+      value: _PublicHorizontalSpeed
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[8].PropertyName
+      value: _PublicVerticalSpeed
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[9].PropertyName
+      value: _PublicAngle
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[10].PropertyName
+      value: _PublicSecondaryAlpha
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[1].Property.FloatValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[2].Property.FloatValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[3].Property.FloatValue
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[4].Property.FloatValue
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[5].Property.FloatValue
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[6].Property.FloatValue
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[7].Property.FloatValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[8].Property.FloatValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[10].Property.FloatValue
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[0].Property.ColorValue.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[0].Property.ColorValue.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[1].Property.ColorValue.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[1].Property.ColorValue.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[1].Property.PropertyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[2].Property.ColorValue.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[2].Property.ColorValue.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[2].Property.PropertyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[3].Property.ColorValue.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[3].Property.ColorValue.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[3].Property.PropertyType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[4].Property.ColorValue.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[4].Property.ColorValue.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[4].Property.PropertyType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[5].Property.ColorValue.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[5].Property.ColorValue.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[5].Property.PropertyType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[6].Property.ColorValue.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[6].Property.ColorValue.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[6].Property.PropertyType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[7].Property.ColorValue.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[7].Property.ColorValue.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[7].Property.PropertyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[8].Property.ColorValue.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[8].Property.ColorValue.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[8].Property.PropertyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[9].Property.ColorValue.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[9].Property.ColorValue.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[9].Property.PropertyType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[10].Property.ColorValue.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[10].Property.ColorValue.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500766630253456149, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[10].Property.PropertyType
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}

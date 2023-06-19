@@ -14,32 +14,7 @@ public class ToggleOutline : MonoBehaviour
 
     private void Start()
     {
-        // Wyszukiwanie obiektu "Player" w scenie
-        GameObject player = GameObject.Find(playerObjectName);
-
-        // Sprawdzanie, czy znaleziono obiekt "Player"
-        if (player != null)
-        {
-            // Sprawdzanie, czy tag gracza jest taki sam jak tag obiektu
-            if (player.CompareTag(gameObject.tag))
-            {
-                // W³¹czanie komponentu Outlinable
-                outlinable = GetComponent<Outlinable>();
-                if (outlinable != null)
-                {
-                    outlinable.enabled = true;
-                }
-            }
-            else
-            {
-                // Wy³¹czanie komponentu Outlinable
-                outlinable = GetComponent<Outlinable>();
-                if (outlinable != null)
-                {
-                    outlinable.enabled = false;
-                }
-            }
-        }
+        outlinable = GetComponent<Outlinable>();
 
         //zmiana koloru postaci w zale¿noœci od tego jaki ma tag teamu
         objectRenderer = GetComponentInChildren<Renderer>();
@@ -47,10 +22,31 @@ public class ToggleOutline : MonoBehaviour
         if (gameObject.tag == "Team Red")
         {
             objectRenderer.material = redMaterial;
+            outlinable.FrontParameters.Color = Color.red;
+            outlinable.BackParameters.Color = Color.red;
         }
         else if (gameObject.tag == "Team Blue")
         {
             objectRenderer.material = blueMaterial;
+            outlinable.FrontParameters.Color = Color.blue;
+            outlinable.BackParameters.Color = Color.blue;
+        }
+
+
+        // Wyszukiwanie obiektu "Player" w scenie
+        GameObject player = GameObject.Find(playerObjectName);
+
+        // Sprawdzanie, czy znaleziono obiekt "Player"
+        if (player != null)
+        {
+            // Sprawdzanie, czy tag gracza inny ni¿ tag obiektu i wy³¹czenie widzenia przez œcianê jeœli jest inny
+            if (!player.CompareTag(gameObject.tag))
+            {
+                if (outlinable != null)
+                {
+                    outlinable.BackParameters.Enabled = false;
+                }
+            }
         }
     }
 }

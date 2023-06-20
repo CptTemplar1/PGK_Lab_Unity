@@ -1,5 +1,7 @@
 using EPOOutline;
+using TMPro;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class ToggleOutline : MonoBehaviour
 {
@@ -11,6 +13,10 @@ public class ToggleOutline : MonoBehaviour
     public Material blueMaterial;
 
     private Renderer objectRenderer;
+
+    //czcionki do nicków dla dru¿yny przeciwnej i naszej (jedne s¹ widoczne przez œciany, inne nie)
+    public TMP_FontAsset friendlyTeam;
+    public TMP_FontAsset enemyTeam; 
 
     private void Start()
     {
@@ -33,6 +39,9 @@ public class ToggleOutline : MonoBehaviour
         }
 
 
+        //wy³¹czenie widzialnoœci przez œciany nicków postaci z przeciwnej dru¿yny
+        TextMeshPro textMeshPro = gameObject.GetComponentInChildren<TextMeshPro>();  //pobranie tmp dla nicku postaci
+
         // Wyszukiwanie obiektu "Player" w scenie
         GameObject player = GameObject.Find(playerObjectName);
 
@@ -45,7 +54,13 @@ public class ToggleOutline : MonoBehaviour
                 if (outlinable != null)
                 {
                     outlinable.BackParameters.Enabled = false;
+                    textMeshPro.font = enemyTeam;
                 }
+            }
+            //jeœli dru¿yny s¹ takie same to w³¹czamy widzenie nicków przez œciany
+            else
+            {
+                textMeshPro.font = friendlyTeam;
             }
         }
     }

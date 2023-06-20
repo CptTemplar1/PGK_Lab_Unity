@@ -3272,6 +3272,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 765186076896122299, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
+      propertyPath: outlineTargets.Array.data[0].IsVisible
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4808843569231808335, guid: 227adf7c8c10f4f40bed2919e0ce8862, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -4509,7 +4513,7 @@ GameObject:
   - component: {fileID: 1604709514}
   m_Layer: 3
   m_Name: Player
-  m_TagString: Team Red
+  m_TagString: Team Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

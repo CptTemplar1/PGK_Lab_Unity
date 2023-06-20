@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2324393417303133934}
   - component: {fileID: 1972040321873741121}
   - component: {fileID: 6583539867234529371}
-  - component: {fileID: 4432201604848645918}
   m_Layer: 0
   m_Name: SonarWave
   m_TagString: Untagged
@@ -3671,7 +3670,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 4
     type: 1
     collisionMode: 0
@@ -3852,7 +3851,7 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 2
     inside: 0
     outside: 0
@@ -4841,7 +4840,7 @@ ParticleSystemRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_RenderMode: 4
+  m_RenderMode: 2
   m_MeshDistribution: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -4871,16 +4870,3 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &4432201604848645918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9097902304333432628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c34822445e5af9c42b5d0d58d67f088c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineDuration: 3

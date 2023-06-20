@@ -1,9 +1,11 @@
+using EPOOutline;
 using UnityEngine;
 
 public class SonarController : MonoBehaviour
 {
     public ParticleSystem particleSystemToPlay;
-    public float cooldownTime = 1f;
+    public float cooldownTime = 4f;
+    public float outlineDistance = 100f;
 
     private bool isCooldown = false;
 
@@ -13,6 +15,7 @@ public class SonarController : MonoBehaviour
         {
             PlayParticleSystem();
             StartCoroutine(Cooldown());
+            StartCoroutine(EnableOutlinableComponents());
         }
     }
 
@@ -28,4 +31,36 @@ public class SonarController : MonoBehaviour
         yield return new WaitForSeconds(cooldownTime);
         isCooldown = false;
     }
+
+    private System.Collections.IEnumerator EnableOutlinableComponents()
+    {
+        yield return new WaitForSeconds(0f);
+
+        Collider[] colliders = Physics.OverlapSphere(transform.position, outlineDistance);
+        foreach (Collider collider in colliders)
+        {
+            if (collider.CompareTag("Outlinable"))
+            {
+                Outlinable outlinable = collider.GetComponent<Outlinable>();
+                if (outlinable != null)
+                {
+                    outlinable.OutlineParameters.Enabled = true;
+                    StartCoroutine(DisableOutlineWithDelay(outlinable, 3f)); // Wywo³anie metody DisableOutline z opóŸnieniem 3 sekundy
+                }
+            }
+        }
+    }
+
+    private System.Collections.IEnumerator DisableOutlineWithDelay(Outlinable outlinable, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        DisableOutline(outlinable);
+    }
+
+    // Wy³¹czenie podœwietlenia obiektu
+    private void DisableOutline(Outlinable outlinable)
+    {
+        outlinable.OutlineParameters.Enabled = false;
+    }
 }
+
